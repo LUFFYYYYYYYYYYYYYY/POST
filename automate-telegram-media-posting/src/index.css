@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tg-blue: #2AABEE;
+  --color-tg-dark: #1B1F24;
+  --color-tg-darker: #14171B;
+  --color-tg-card: #1E2328;
+  --color-tg-border: #2C3038;
+  --color-tg-text: #E1E3E6;
+  --color-tg-muted: #8B9099;
+  --color-tg-success: #4CAF50;
+  --color-tg-error: #F44336;
+  --color-tg-warning: #FF9800;
+  --color-tg-hover: #252A30;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2C3038 transparent;
+}
+
+body {
+  background-color: #14171B;
+  color: #E1E3E6;
+}
+
+.drag-ghost {
+  opacity: 0.5;
+}
+
+.drag-chosen {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #2AABEE; }
+  50% { border-color: #1B8BC4; }
+}
+
+.upload-zone-active {
+  animation: pulse-border 1s ease-in-out infinite;
+  background-color: rgba(42, 171, 238, 0.05);
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+@keyframes progress-bar {
+  from { width: 0%; }
+}
+
+.animate-progress {
+  animation: progress-bar 0.5s ease-out;
+}
