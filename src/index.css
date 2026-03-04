@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fallback colors — будут переопределены Telegram'ом если мы внутри TMA */
+  --color-tg-blue: #2AABEE;
+  --color-tg-dark: #1B1F24;
+  --color-tg-darker: #14171B;
+  --color-tg-card: #1E2328;
+  --color-tg-border: #2C3038;
+  --color-tg-text: #E1E3E6;
+  --color-tg-muted: #8B9099;
+  --color-tg-success: #4CAF50;
+  --color-tg-error: #F44336;
+  --color-tg-warning: #FF9800;
+  --color-tg-hover: #252A30;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2C3038 transparent;
+}
+
+body {
+  background-color: var(--tg-theme-bg-color, #14171B);
+  color: var(--tg-theme-text-color, #E1E3E6);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* Telegram Mini App adaptive colors */
+body.tma-active {
+  --color-tg-darker: var(--tg-theme-bg-color, #14171B);
+  --color-tg-dark: var(--tg-theme-secondary-bg-color, #1B1F24);
+  --color-tg-card: var(--tg-theme-section-bg-color, #1E2328);
+  --color-tg-text: var(--tg-theme-text-color, #E1E3E6);
+  --color-tg-muted: var(--tg-theme-hint-color, #8B9099);
+  --color-tg-blue: var(--tg-theme-button-color, #2AABEE);
+  --color-tg-border: var(--tg-theme-section-separator-color, #2C3038);
+}
+
+/* Mobile touch improvements */
+input, textarea, button {
+  -webkit-appearance: none;
+  touch-action: manipulation;
+}
+
+/* Safe area for fixed bottom bar */
+.fixed.bottom-0 {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.drag-ghost {
+  opacity: 0.5;
+}
+
+.drag-chosen {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #2AABEE; }
+  50% { border-color: #1B8BC4; }
+}
+
+.upload-zone-active {
+  animation: pulse-border 1s ease-in-out infinite;
+  background-color: rgba(42, 171, 238, 0.05);
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+@keyframes progress-bar {
+  from { width: 0%; }
+}
+
+.animate-progress {
+  animation: progress-bar 0.5s ease-out;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes tma-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(42, 171, 238, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(42, 171, 238, 0.25); }
+}
+
+.tma-glow {
+  animation: tma-glow 2s ease-in-out infinite;
+}
